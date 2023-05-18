@@ -14,7 +14,6 @@ def filter_normal_ranges(mimic_data):
     mimic_data_w_simulatenous_measures = mimic_data_w_normal_target_ranges.loc[
         np.abs(mimic_data_w_normal_target_ranges["delta_SpO2"]) <= 30
         ]
-    mimic_data_w_simulatenous_measures.hist(column="delta_SpO2", bins=30)
     print(mimic_data_w_normal_target_ranges.shape, "to", mimic_data_w_simulatenous_measures.shape, sep="")
 
     mask_norepi_range = (
@@ -23,5 +22,6 @@ def filter_normal_ranges(mimic_data):
     )
     mimic_data_w_normal_norepi_range = mimic_data_w_simulatenous_measures.loc[mask_norepi_range]
     print("Keeping norepinephrine_equivalent_dose <= 10")
+    print("Final number of patients: ",len(mimic_data_w_normal_norepi_range))
 
     return mimic_data_w_normal_norepi_range
