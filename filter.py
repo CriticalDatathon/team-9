@@ -1,4 +1,5 @@
 import pandas as pd
+import numpy as np
 
 def filter_normal_ranges(mimic_data):
     """
